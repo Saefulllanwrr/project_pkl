@@ -1,0 +1,149 @@
+:root {
+  --main-bg-color: #091057;
+  --main-text-color: #091057;
+  --second-text-color: #6c757d;
+  --second-bg-color: #f8f9fa;
+  --hover-color: #0d1576;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --sidebar-icon-color: #091057;
+}
+
+.primary-text {
+  color: var(--main-text-color);
+  font-weight: 600;
+}
+
+.second-text {
+  color: var(--second-text-color);
+  transition: color 0.3s ease;
+}
+
+.primary-bg {
+  background-color: var(--main-bg-color);
+  transition: background-color 0.3s ease;
+}
+
+.secondary-bg {
+  background-color: var(--second-bg-color);
+}
+
+.rounded-full {
+  border-radius: 50%;
+}
+
+#wrapper {
+  overflow-x: hidden;
+  background: var(--second-bg-color);
+  min-height: 100vh;
+  display: flex;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  transition: margin 0.35s ease-in-out;
+  box-shadow: 2px 0 10px var(--shadow-color);
+  position: fixed;
+  z-index: 1;
+  background: white;
+  padding: 1px; /* Added padding for better spacing */
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 1rem 1.5rem;
+  font-size: 1.5rem; /* Increased font size for better visibility */
+  font-weight: bold;
+  color: var(--main-text-color);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#sidebar-wrapper .list-group-item {
+  border: none;
+  padding: 12px 20px; /* Adjusted padding for better spacing */
+  margin: 5px 0; /* Adjusted margin for vertical spacing */
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#sidebar-wrapper .list-group-item i {
+  color: var(--sidebar-icon-color);
+  margin-right: 10px; /* Added margin for spacing between icon and text */
+}
+
+#sidebar-wrapper .list-group-item:hover {
+  background-color: rgba(9, 16, 87, 0.1);
+  transform: translateX(5px);
+}
+
+#sidebar-wrapper .list-group-item.active {
+  background-color: transparent; /* Changed to transparent to remove background */
+  color: var(--main-text-color);
+  font-weight: bold;
+  border: none;
+  box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+  padding: 20px;
+  margin-left: 0;
+  transition: margin-left 0.35s ease-in-out;
+  margin-right: 20px; /* Added margin to create space between the table and sidebar */
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+#wrapper.toggled #page-content-wrapper {
+  margin-left: 15rem;
+}
+
+#menu-toggle {
+  cursor: pointer;
+  padding: 10px;
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+#menu-toggle:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  #sidebar-wrapper a.list-group-item .list-group-item-action {
+    width: 100%; /* Make list group full width on smaller screens */
+  }
+
+  .list-group-item {
+    padding: 10px 15px; /* Adjust padding for smaller screens */
+  }
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+    margin-left: 15rem;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -20rem;
+  }
+
+  #wrapper.toggled #page-content-wrapper {
+    margin-left: 0;
+  }
+}
